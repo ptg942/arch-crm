@@ -23,7 +23,11 @@
           "buildDepsName": "build-deps",
           "watchDepsName": "watch-deps"
         }
-      }
+      },
+      "exclude": [
+        "packages/data-access/*",
+        "packages/general/*"
+      ]
     },
     {
       "plugin": "@nx/webpack/plugin",
@@ -34,6 +38,18 @@
         "buildDepsTargetName": "build-deps",
         "watchDepsTargetName": "watch-deps",
         "serveStaticTargetName": "serve-static"
+      }
+    },
+    {
+      "plugin": "@nx/js/typescript",
+      "include": [
+        "packages/data-access/*",
+        "packages/general/*"
+      ],
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        }
       }
     }
   ]
