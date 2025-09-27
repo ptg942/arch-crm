@@ -5,11 +5,28 @@ import {Document} from "mongoose";
 export type ClientDocument = Client & Document;
 
 @Schema({ timestamps: true })
+export class Contact {
+    @Prop({ required: true })
+    fullName!: string;
+
+    @Prop({ required: true })
+    position!: string;
+
+    @Prop({ required: true })
+    phone!: string;
+
+    @Prop()
+    email!: string;
+}
+
+export const ContactSchema = SchemaFactory.createForClass(Contact);
+
+@Schema({ timestamps: true })
 export class Client {
     @Prop({ required: true })
     name!: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, enum: ClientTypeEnum  })
     clientType!: ClientTypeEnum;
 
     @Prop({ required: true })
@@ -27,23 +44,9 @@ export class Client {
     @Prop({ required: true })
     responsibleUserId!: string;
 
-    @Prop({ required: true })
-    contacts!: Array<Contact>;
-}
-
-@Schema({ timestamps: true })
-export class Contact {
-    @Prop({ required: true })
-    fullName!: string;
-
-    @Prop({ required: true })
-    position!: string;
-
-    @Prop({ required: true })
-    phone!: string;
-
-    @Prop()
-    email!: string;
+    @Prop({ type: [ContactSchema], _id: false })
+    contacts!: Contact[];
 }
 
 export const ClientSchema = SchemaFactory.createForClass(Client);
+
