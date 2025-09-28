@@ -29,6 +29,6 @@ export class UsersService {
   }
 
   remove(id: string) {
-    return this.userModel.findByIdAndUpdate(id, { $set: { status: UserStatusEnum.DELETED }}).exec();
+    return this.userModel.findByIdAndUpdate(id, { $set: { status: UserStatusEnum.DELETED }}, { new: true }).exec();
   }
 }

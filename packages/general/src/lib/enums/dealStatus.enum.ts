@@ -6,4 +6,5 @@ export enum DealStatusEnum {
     IN_PROGRESS = 40,
     SUCCESS = 50,
     FAILED = 90,
+    DELETED = 100
 }

@@ -19,16 +19,16 @@ export class DealsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.dealsService.findOne(+id);
+    return this.dealsService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateDealDto: UpdateDealDto) {
-    return this.dealsService.update(+id, updateDealDto);
+    return this.dealsService.update(id, updateDealDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.dealsService.remove(+id);
+    return this.dealsService.remove(id);
   }
 }

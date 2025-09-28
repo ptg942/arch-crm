@@ -1,5 +1,5 @@
 export enum TaskStatusEnum {
-    TODO = "К выполнению",
-    IN_PROGRESS = "В работе",
-    DONE = "Выполнена",
+    TODO = 0,
+    IN_PROGRESS = 10,
+    DONE = 50,
 }

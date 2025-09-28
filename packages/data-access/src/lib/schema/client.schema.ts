@@ -1,4 +1,4 @@
-import {ClientTypeEnum} from "@arch-crm/general";
+import {ClientStatusEnum, ClientTypeEnum} from "@arch-crm/general";
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 import {Document} from "mongoose";
 
@@ -27,7 +27,10 @@ export class Client {
     name!: string;
 
     @Prop({ required: true, enum: ClientTypeEnum, type: Number })
-    clientType!: ClientTypeEnum;
+    type!: ClientTypeEnum;
+
+    @Prop({ required: true, enum: ClientStatusEnum, type: Number, default: ClientStatusEnum.NEW })
+    status!: ClientStatusEnum;
 
     @Prop({ required: true })
     phone!: string;

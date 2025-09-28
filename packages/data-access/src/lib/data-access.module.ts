@@ -13,4 +13,4 @@ import {User, UserSchema, Client, ClientSchema, Project, ProjectSchema, Deal, De
 		{ name: Deal.name, schema: DealSchema },
 	]),]
 })
-export class ArchCrmDataAccessModule {}
+export class DataAccessModule {}

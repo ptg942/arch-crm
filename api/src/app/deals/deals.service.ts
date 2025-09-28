@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDealDto } from './dto/create-deal.dto';
 import { UpdateDealDto } from './dto/update-deal.dto';
+import {InjectModel} from "@nestjs/mongoose";
+import {Deal, DealDocument} from "@arch-crm/data-access";
+import {Model} from "mongoose";
+import {DealStatusEnum} from "@arch-crm/general";
 
 @Injectable()
 export class DealsService {
+  constructor(@InjectModel(Deal.name) private dealModel: Model<DealDocument>) {
+  }
+
   create(createDealDto: CreateDealDto) {
-    return 'This action adds a new deal';
+    const createDeal = new this.dealModel(createDealDto);
+    return createDeal.save();
   }
 
   findAll() {
-    return `This action returns all deals`;
+    return this.dealModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} deal`;
+  findOne(id: string) {
+    return this.dealModel.findById(id).exec();
   }
 
-  update(id: number, updateDealDto: UpdateDealDto) {
-    return `This action updates a #${id} deal`;
+  update(id: string, updateDealDto: UpdateDealDto) {
+    return this.dealModel.findByIdAndUpdate(id, { $set: { ...updateDealDto }}, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} deal`;
+  remove(id: string) {
+    return this.dealModel.findByIdAndUpdate(id, { $set: { status: DealStatusEnum.DELETED }}, { new: true }).exec();
   }
 }

@@ -3,3 +3,4 @@ export * from "./clientType.enum";
 export * from "./projectStatus.enum";
 export * from "./taskStatus.enum";
 export * from "./dealStatus.enum";
+export * from "./clientStatus.enum";
