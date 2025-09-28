@@ -26,7 +26,7 @@ export class Client {
     @Prop({ required: true })
     name!: string;
 
-    @Prop({ required: true, enum: ClientTypeEnum  })
+    @Prop({ required: true, enum: ClientTypeEnum, type: Number })
     clientType!: ClientTypeEnum;
 
     @Prop({ required: true })

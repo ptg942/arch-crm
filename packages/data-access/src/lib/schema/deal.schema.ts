@@ -18,7 +18,7 @@ export class Deal {
     @Prop({ type: Types.ObjectId, ref: "User", required: true })
     responsibleUserId!: Types.ObjectId;
 
-    @Prop({ required: true, enum: DealStatusEnum })
+    @Prop({ required: true, enum: DealStatusEnum, type: Number })
     status!: DealStatusEnum;
 
     @Prop({ required: true })

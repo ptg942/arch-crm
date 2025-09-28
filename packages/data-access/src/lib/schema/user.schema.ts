@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from 'mongoose';
-import { UserStatusEnum } from '@arch-crm/general'
+import { UserStatusEnum} from '@arch-crm/general'
 
 export type UserDocument = User & Document;
 
@@ -21,7 +21,7 @@ export class User {
     @Prop({ required: true })
     position!: string;
 
-    @Prop({ default: UserStatusEnum.NEW })
+    @Prop({ enum: UserStatusEnum, type: Number, default: UserStatusEnum.NEW })
     status!: UserStatusEnum;
 }
 

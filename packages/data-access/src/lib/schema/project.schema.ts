@@ -12,7 +12,7 @@ export class Task {
     @Prop({ type: Types.ObjectId, ref: "User", required: true })
     assigneeId!: Types.ObjectId; // ссылка на пользователя
 
-    @Prop({ required: true, enum: TaskStatusEnum })
+    @Prop({ required: true, enum: TaskStatusEnum, type: Number })
     status!: TaskStatusEnum;
 
     @Prop()
@@ -38,7 +38,7 @@ export class Project {
     @Prop({ type: Types.ObjectId, ref: "User", required: true })
     managerId!: Types.ObjectId; // ГАП
 
-    @Prop({ required: true, enum: ProjectStatusEnum })
+    @Prop({ required: true, enum: ProjectStatusEnum, type: Number })
     status!: ProjectStatusEnum;
 
     @Prop({ required: true })
