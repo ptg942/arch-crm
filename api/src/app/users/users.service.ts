@@ -4,6 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {User, UserDocument} from "@arch-crm/data-access";
+import {UserStatusEnum} from "@arch-crm/general";
 
 @Injectable()
 export class UsersService {
@@ -16,18 +17,18 @@ export class UsersService {
   }
 
   findAll() {
-    return `This action returns all users`;
+    return this.userModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOne(id: string) {
+    return this.userModel.findById(id).exec();
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(id: string, updateUserDto: UpdateUserDto) {
+    return this.userModel.findByIdAndUpdate(id, { $set: { ...updateUserDto }}, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  remove(id: string) {
+    return this.userModel.findByIdAndUpdate(id, { $set: { status: UserStatusEnum.DELETED }}).exec();
   }
 }

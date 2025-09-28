@@ -17,6 +17,9 @@
   "exclude": [],
   "references": [
     {
+      "path": "../packages/general/tsconfig.lib.json"
+    },
+    {
       "path": "../packages/data-access/tsconfig.lib.json"
     }
   ]

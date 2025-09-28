@@ -4,6 +4,9 @@
   "include": [],
   "references": [
     {
+      "path": "../packages/general"
+    },
+    {
       "path": "../packages/data-access"
     },
     {
