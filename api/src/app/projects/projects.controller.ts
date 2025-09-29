@@ -2,11 +2,12 @@ import {Controller, Get, Post, Body, Patch, Param, Delete, UseGuards} from '@nes
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
+import {ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody, ApiBearerAuth} from '@nestjs/swagger';
 import {AuthGuard} from "@nestjs/passport";
 
 @ApiTags('Projects')
 @Controller('projects')
+@ApiBearerAuth()
 @UseGuards(AuthGuard('jwt'))
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}

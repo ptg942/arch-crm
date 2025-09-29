@@ -4,9 +4,11 @@ import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
 import {AuthGuard} from "@nestjs/passport";
+import { ApiBearerAuth } from '@nestjs/swagger';
 
-@ApiTags('Clients') // 👈 Группа в Swagger
+@ApiTags('Clients')
 @Controller('clients')
+@ApiBearerAuth()
 @UseGuards(AuthGuard('jwt'))
 export class ClientsController {
   constructor(private readonly clientsService: ClientsService) {}

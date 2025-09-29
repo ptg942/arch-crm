@@ -2,11 +2,12 @@ import {Controller, Get, Post, Body, Patch, Param, Delete, UseGuards} from '@nes
 import { DealsService } from './deals.service';
 import { CreateDealDto } from './dto/create-deal.dto';
 import { UpdateDealDto } from './dto/update-deal.dto';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
+import {ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody, ApiBearerAuth} from '@nestjs/swagger';
 import {AuthGuard} from "@nestjs/passport";
 
 @ApiTags('Deals') // 👈 Группа в Swagger
 @Controller('deals')
+@ApiBearerAuth()
 @UseGuards(AuthGuard('jwt'))
 export class DealsController {
   constructor(private readonly dealsService: DealsService) {}
