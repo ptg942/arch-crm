@@ -19,6 +19,8 @@ async function bootstrap() {
       .setDescription('API документация для Arch CRM')
       .setVersion('1.0')
       .addBearerAuth()
+      .addTag('Auth', 'Авторизация и получение токена')
+      .addTag('Users', 'Пользователи')
       .build();
 
   const document = SwaggerModule.createDocument(app, config);
