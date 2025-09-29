@@ -6,9 +6,10 @@ import { DealsModule } from './deals/deals.module';
 import { ProjectsModule } from './projects/projects.module';
 import { UsersModule } from './users/users.module';
 import {MongooseModule} from "@nestjs/mongoose";
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/arch-crm'),ClientsModule, DealsModule, ProjectsModule, UsersModule],
+  imports: [MongooseModule.forRoot('mongodb://localhost/arch-crm'),ClientsModule, DealsModule, ProjectsModule, UsersModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

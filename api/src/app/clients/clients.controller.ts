@@ -1,11 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Delete, UseGuards} from '@nestjs/common';
 import { ClientsService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
+import {AuthGuard} from "@nestjs/passport";
 
 @ApiTags('Clients') // 👈 Группа в Swagger
 @Controller('clients')
+@UseGuards(AuthGuard('jwt'))
 export class ClientsController {
   constructor(private readonly clientsService: ClientsService) {}
 

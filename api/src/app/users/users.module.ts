@@ -7,5 +7,6 @@ import {DataAccessModule} from '@arch-crm/data-access'
   controllers: [UsersController],
   providers: [UsersService],
   imports: [DataAccessModule],
+  exports: [UsersService],
 })
 export class UsersModule {}
