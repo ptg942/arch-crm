@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "emitDeclarationOnly": false,
+    "isolatedModules": false,
+    "types": ["node"],
+    "target": "es2022",
+    "useDefineForClassFields": false,
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.ts", "src/polyfills.ts"],
+  "exclude": ["dist", "node_modules"]
+}

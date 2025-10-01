@@ -1,12 +1,11 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
-      "default"
+      "default",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/eslint.config.mjs"
     ],
     "sharedGlobals": []
   },
@@ -24,10 +23,7 @@
           "watchDepsName": "watch-deps"
         }
       },
-      "exclude": [
-        "packages/data-access/*",
-        "packages/general/*"
-      ]
+      "exclude": ["packages/data-access/*", "packages/general/*"]
     },
     {
       "plugin": "@nx/webpack/plugin",
@@ -42,15 +38,36 @@
     },
     {
       "plugin": "@nx/js/typescript",
-      "include": [
-        "packages/data-access/*",
-        "packages/general/*"
-      ],
+      "include": ["packages/data-access/*", "packages/general/*"],
       "options": {
         "typecheck": {
           "targetName": "typecheck"
         }
       }
     }
-  ]
+  ],
+  "targetDefaults": {
+    "@angular/build:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "@nx/eslint:lint": {
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore",
+        "{workspaceRoot}/eslint.config.mjs"
+      ]
+    }
+  },
+  "generators": {
+    "@nx/angular:application": {
+      "e2eTestRunner": "none",
+      "linter": "eslint",
+      "style": "scss",
+      "unitTestRunner": "none"
+    }
+  }
 }
