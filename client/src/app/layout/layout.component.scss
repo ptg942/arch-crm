@@ -1,21 +1,75 @@
-.layout-container {
+.sidenav-container {
   height: 100vh;
 }
 
 .sidenav {
-  width: 220px;
+  background: #1e293b;
+  color: white;
+  transition: width 0.3s ease-in-out;
+  overflow-x: hidden; // Прячем горизонтальный скролл
+  border-radius: 0;
+
+  .sidenav-header {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 64px; // Стандартная высота toolbar
+  }
+
+  .logo-text {
+    margin-left: 16px;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  mat-icon {
+    color: #e2e8f0; // Слегка приглушенный белый для иконок
+  }
+
+  // Стили для пунктов меню
+  .mat-mdc-list-item {
+    color: #e2e8f0;
+
+    // Убираем лишние отступы, чтобы центрирование работало лучше
+    ::ng-deep .mdc-list-item__content {
+      padding: 0;
+    }
+  }
+
+  // Плавное появление текста
+  .menu-text {
+    margin-left: 20px;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    color: #e2e8f0;
+  }
+
+  // Стиль активной ссылки
+  .active-link {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white; // Делаем текст и иконку ярче
+    mat-icon {
+      color: white;
+    }
+  }
+
+  // --- Магия для свернутого состояния ---
+  &.collapsed {
+    // Центрируем иконки, когда меню свернуто
+    .mat-mdc-list-item {
+      justify-content: center;
+    }
+
+    // Прячем текст
+    .menu-text, .logo-text {
+      opacity: 0;
+      width: 0; // Схлопываем, чтобы не занимало место
+    }
+  }
 }
 
-.mat-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
+// Контент страницы
 .content {
-  padding: 20px;
+  padding: 24px;
+  background-color: #f8fafc; // Светлый фон для контраста
 }
