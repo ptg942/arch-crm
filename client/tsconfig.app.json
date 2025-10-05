@@ -8,6 +8,10 @@
     "types": ["node"],
     "target": "es2022",
     "useDefineForClassFields": false,
+    "lib": [
+      "ES2022",
+      "dom"
+    ]
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.ts", "src/polyfills.ts"],
