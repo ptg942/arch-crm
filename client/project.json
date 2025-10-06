@@ -21,7 +21,7 @@
             "input": "client/public"
           }
         ],
-        "styles": ["client/src/styles.scss"]
+        "styles": ["node_modules/@angular/material/prebuilt-themes/indigo-pink.css","client/src/styles.scss"]
       },
       "configurations": {
         "production": {
