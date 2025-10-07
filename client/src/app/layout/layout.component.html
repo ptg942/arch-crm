@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+            mode="side"
+            class="sidenav"
+            [opened]="true"
+            [class.collapsed]="collapsed"
+            [style.width.px]="collapsed ? 65 : 240">
+
+        <div class="sidenav-header">
+            <button mat-icon-button (click)="toggleSidebar()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            @if (!collapsed) {
+                <span class="logo-text">CRM</span>
+            }
+        </div>
+
+        <mat-nav-list>
+            <a mat-list-item
+               routerLink="/dashboard"
+               routerLinkActive="active-link"
+               [matTooltip]="collapsed ? 'Панель' : ''"
+               matTooltipPosition="right">
+                <mat-icon>dashboard</mat-icon>
+                @if (!collapsed) { <span class="menu-text">Панель</span> }
+            </a>
+            <a mat-list-item
+               routerLink="/clients"
+               routerLinkActive="active-link"
+               [matTooltip]="collapsed ? 'Клиенты' : ''"
+               matTooltipPosition="right">
+                <mat-icon>business</mat-icon>
+                @if (!collapsed) { <span class="menu-text">Клиенты</span> }
+            </a>
+            <a mat-list-item
+               routerLink="/users"
+               routerLinkActive="active-link"
+               [matTooltip]="collapsed ? 'Ползаватели' : ''"
+               matTooltipPosition="right">
+                <mat-icon>group</mat-icon>
+                @if (!collapsed) { <span class="menu-text">Клиенты</span> }
+            </a>
+            <a mat-list-item
+               routerLink="/settings"
+               routerLinkActive="active-link"
+               [matTooltip]="collapsed ? 'Настройки' : ''"
+               matTooltipPosition="right">
+                <mat-icon>settings</mat-icon>
+                @if (!collapsed) { <span class="menu-text">Настройки</span> }
+            </a>
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
