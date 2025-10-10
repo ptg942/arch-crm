@@ -109,7 +109,7 @@ export class UsersComponent implements OnInit {
           // После удаления обновляем список, убирая удаленного пользователя
           this.state.update((current) => ({
             ...current,
-            users: current.users.filter((u) => u.id !== id),
+            users: current.users.filter((u) => u._id !== id),
           }));
         },
         error: (err) => {
