@@ -24,7 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { UserStatusEnum } from '../../../models/user.models';
 
 @Component({
-  selector: 'app-user-edit',
+  selector: 'app-user-update',
   standalone: true,
   // 👇 Добавляем модули Material Design для красивой формы
   imports: [
@@ -39,10 +39,10 @@ import { UserStatusEnum } from '../../../models/user.models';
     MatSelectModule,
     MatDialogTitle,
   ],
-  templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.scss'],
+  templateUrl: './update-user.component.html',
+  styleUrls: ['./update-user.component.scss'],
 })
-export class UserEditComponent implements OnInit {
+export class UpdateUserComponent implements OnInit {
   profileForm: FormGroup;
   userId: string;
   isLoading = true;
@@ -58,7 +58,7 @@ export class UserEditComponent implements OnInit {
   private userService = inject(UsersService);
 
   // 👇 Инжектируем сервисы для работы с диалогом
-  private dialogRef = inject(MatDialogRef<UserEditComponent>);
+  private dialogRef = inject(MatDialogRef<UpdateUserComponent>);
   public data: { id: string } = inject(MAT_DIALOG_DATA);
 
   constructor() {

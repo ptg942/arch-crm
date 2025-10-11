@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { UserEditComponent } from '../features/users/edit/user-edit.component';
+import { UpdateUserComponent } from '../features/users/update/update-user.component';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class DialogService {
 
   // Метод для открытия окна редактирования пользователя
   openEditUserDialog(userId: string): Observable<any> {
-    const dialogRef = this.dialog.open(UserEditComponent, {
+    const dialogRef = this.dialog.open(UpdateUserComponent, {
       width: '500px', // Задаем ширину окна
       disableClose: true, // Запрещаем закрытие по клику на фон
       data: { id: userId }, // 👈 Передаем ID пользователя в компонент
