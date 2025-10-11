@@ -24,6 +24,7 @@ export class UsersService {
   // POST /api/users - Создать нового пользователя
   // Omit<User, 'id'> означает "все поля из User, кроме id"
   createUser(user: Omit<User, '_id'>): Observable<User> {
+    console.log(user);
     return this.http.post<User>(this.apiUrl, user);
   }
 

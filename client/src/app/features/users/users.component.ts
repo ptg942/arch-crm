@@ -123,10 +123,10 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  editUser(userId: string): void {
+  updateUser(userId: string): void {
     // Передаем ID пользователя в диалоговое окно
     const dialogSub = this.dialogService
-      .openEditUserDialog(userId)
+      .openUpdateUserDialog(userId)
       .subscribe((updatedUser) => {
         // Если окно вернуло обновленного пользователя (т.е. не была нажата "Отмена")
         if (updatedUser) {
@@ -136,6 +136,20 @@ export class UsersComponent implements OnInit {
             users: current.users.map((user) =>
               user._id === userId ? { ...user, ...updatedUser } : user
             ),
+          }));
+        }
+        dialogSub.unsubscribe();
+      });
+  }
+
+  createUser(): void {
+    const dialogSub = this.dialogService
+      .openCreateUserDialog()
+      .subscribe((newUser) => {
+        if (newUser) {
+          this.state.update((current) => ({
+            ...current,
+            users: [newUser, ...current.users],
           }));
         }
         dialogSub.unsubscribe();

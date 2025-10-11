@@ -9,4 +9,19 @@ export interface User {
   fullName: string;
   email: string;
   status: UserStatusEnum;
+  passwordHash: string;
+  role: UserRoleEnum;
+  position: UserPositionEnum;
+}
+
+export enum UserRoleEnum {
+  ADMIN = 'admin',
+  USER = 'user',
+}
+
+export enum UserPositionEnum {
+  MANAGER = 'manager',
+  ARCHITECT = 'architect',
+  CONSTRUCTOR = 'constructor',
+  ENGINEER = 'engineer',
 }
