@@ -1,0 +1,72 @@
+.dialog-container {
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.error-message {
+  color: #f44336;
+  background-color: #ffebee;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 16px;
+  border: 1px solid #f44336;
+}
+
+.dialog-actions {
+  padding: 16px 0 0 0;
+  margin-bottom: 0;
+  gap: 8px;
+}
+
+// Стили для полей формы
+mat-form-field {
+  margin-bottom: 8px;
+}
+
+// Убедимся, что контент диалога имеет правильные отступы
+mat-dialog-content {
+  padding: 0 24px;
+  margin: 0;
+}
+
+// Стили для заголовка
+mat-dialog-title {
+  margin: 0 0 16px 0;
+  padding: 24px 24px 0 24px;
+  font-weight: 500;
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 480px) {
+  .dialog-container {
+    min-width: unset;
+    width: 100vw;
+    margin: 0 -24px;
+  }
+
+  mat-dialog-content {
+    padding: 0 16px;
+  }
+
+  mat-dialog-title {
+    padding: 16px 16px 0 16px;
+  }
+}

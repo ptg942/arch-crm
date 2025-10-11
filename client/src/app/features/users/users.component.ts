@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInput } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { UserStatusPipe } from '../../pipes/userStatus.pipe';
+import { DialogService } from '../../services/dialog.service';
 
 // Определяем интерфейс для нашего состояния
 interface UsersState {
@@ -53,6 +54,8 @@ export class UsersComponent implements OnInit {
     isLoading: true,
     error: null,
   });
+
+  private dialogService = inject(DialogService);
 
   // 2. Создаем вычисляемые сигналы для удобного доступа в шаблоне
   users = computed(() => this.state().users);
@@ -118,5 +121,24 @@ export class UsersComponent implements OnInit {
         },
       });
     }
+  }
+
+  editUser(userId: string): void {
+    // Передаем ID пользователя в диалоговое окно
+    const dialogSub = this.dialogService
+      .openEditUserDialog(userId)
+      .subscribe((updatedUser) => {
+        // Если окно вернуло обновленного пользователя (т.е. не была нажата "Отмена")
+        if (updatedUser) {
+          // Обновляем пользователя в нашем состоянии
+          this.state.update((current) => ({
+            ...current,
+            users: current.users.map((user) =>
+              user._id === userId ? { ...user, ...updatedUser } : user
+            ),
+          }));
+        }
+        dialogSub.unsubscribe();
+      });
   }
 }

@@ -6,6 +6,7 @@ import { UsersComponent } from './features/users/users.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
+import { UserEditComponent } from './features/users/edit/user-edit.component';
 
 export const appRoutes: Route[] = [
   {
@@ -20,6 +21,7 @@ export const appRoutes: Route[] = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'clients', component: ClientsComponent },
       { path: 'users', component: UsersComponent },
+      { path: 'users/edit/:id', component: UserEditComponent },
       { path: 'settings', component: SettingsComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
