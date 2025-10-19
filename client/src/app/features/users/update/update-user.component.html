@@ -1,0 +1,64 @@
+<div class="dialog-container">
+    <h2 mat-dialog-title>Редактировать профиль</h2>
+
+    <mat-dialog-content>
+        @if (isLoading) {
+            <div class="spinner-container">
+                <mat-spinner></mat-spinner>
+            </div>
+        }
+
+        @if (!isLoading) {
+            <form [formGroup]="profileForm" class="profile-form">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Имя</mat-label>
+                    <input matInput formControlName="fullName" placeholder="Топ Нanki">
+                    @if (profileForm.get('fullName')?.hasError('required')) {
+                        <mat-error>
+                            Имя обязательно
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="i.ivanov@arch.co">
+                    @if (profileForm.get('email')?.hasError('email')) {
+                        <mat-error>
+                            Неверный формат email
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Статус</mat-label>
+                    <mat-select formControlName="status">
+                        @for (option of statusOptions; track option.value) {
+                            <mat-option [value]="option.value">
+                                {{ option.viewValue }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                    @if (profileForm.get('status')?.hasError('required')) {
+                        <mat-error>
+                            Статус обязателен
+                        </mat-error>
+                    }
+                </mat-form-field>
+            </form>
+        }
+
+        @if (errorMessage) {
+            <div class="error-message">
+                {{ errorMessage }}
+            </div>
+        }
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end" class="dialog-actions">
+        <button mat-button (click)="onCancel()">Отмена</button>
+        <button mat-flat-button color="primary" (click)="onSave()" [disabled]="profileForm.invalid">
+            Сохранить
+        </button>
+    </mat-dialog-actions>
+</div>

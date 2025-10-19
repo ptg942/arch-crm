@@ -6,6 +6,8 @@ import { UsersComponent } from './features/users/users.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
+import { UpdateUserComponent } from './features/users/update/update-user.component';
+import { CreateUserComponent } from './features/users/create/create-user.component';
 
 export const appRoutes: Route[] = [
   {
@@ -20,6 +22,8 @@ export const appRoutes: Route[] = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'clients', component: ClientsComponent },
       { path: 'users', component: UsersComponent },
+      { path: 'users/crate', component: CreateUserComponent },
+      { path: 'users/update/:id', component: UpdateUserComponent },
       { path: 'settings', component: SettingsComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],

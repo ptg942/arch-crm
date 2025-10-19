@@ -5,8 +5,23 @@ export enum UserStatusEnum {
   DELETED = 30,
 }
 export interface User {
-  id: string;
+  _id: string;
   fullName: string;
   email: string;
   status: UserStatusEnum;
+  passwordHash: string;
+  role: UserRoleEnum;
+  position: UserPositionEnum;
+}
+
+export enum UserRoleEnum {
+  ADMIN = 'admin',
+  USER = 'user',
+}
+
+export enum UserPositionEnum {
+  MANAGER = 'manager',
+  ARCHITECT = 'architect',
+  CONSTRUCTOR = 'constructor',
+  ENGINEER = 'engineer',
 }
