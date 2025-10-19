@@ -22,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UsersService } from '../users.service';
 import { MatSelectModule } from '@angular/material/select';
 import { UserPositionEnum, UserRoleEnum } from '../../../models/user.models';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-update',
@@ -38,6 +39,7 @@ import { UserPositionEnum, UserRoleEnum } from '../../../models/user.models';
     MatDialogActions,
     MatSelectModule,
     MatDialogTitle,
+    TranslatePipe,
   ],
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.scss'],

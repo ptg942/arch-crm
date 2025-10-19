@@ -1,0 +1,50 @@
+{
+  "MENU": {
+    "DASHBOARD": "Панель",
+    "CLIENTS": "Клиенты",
+    "USERS": "Пользователи",
+    "SETTINGS": "Настройки"
+  },
+  "LANGUAGE": {
+    "SELECT": "Выберите язык"
+  },
+  "COMMON": {
+    "SAVE": "Сохранить",
+    "CANCEL": "Отмена",
+    "DELETE": "Удалить",
+    "EDIT": "Редактировать",
+    "WAITING": "Ожидание...",
+    "RETRY": "Попробовать снова"
+  },
+  "ENTITIES": {
+    "USER": "пользователя",
+    "CLIENT": "клиента",
+    "PROJECT": "проекта"
+  },
+  "FIELDS": {
+    "FULL_NAME": "Имя",
+    "EMAIL": "Email",
+    "PASSWORD": "Пароль"
+  },
+  "ERRORS": {
+    "FULL_NAME_REQUIRED": "Имя обязательно",
+    "EMAIL_INVALID": "Неверный формат email",
+    "PASSWORD_REQUIRED": "Пароль обязателен"
+  },
+  "DIALOGS": {
+    "CREATE_TITLE": "Создание {{entity}}",
+    "EDIT_TITLE": "Редактирование {{entity}}",
+    "DELETE_TITLE": "Удаление {{entity}}"
+  },
+  "USERS": {
+    "TITLE": "Пользователи",
+    "CREATE": "Создать пользователя",
+    "SEARCH_LABEL": "Поиск по имени или email",
+    "SEARCH_PLACEHOLDER": "Начните вводить...",
+    "NAME": "Имя",
+    "STATUS": "Статус",
+    "ACTIONS": "Действия",
+    "DELETE_CONFIRM": "Вы уверены, что хотите удалить этого пользователя?",
+    "LOAD_ERROR": "Не удалось загрузить пользователей"
+  }
+}

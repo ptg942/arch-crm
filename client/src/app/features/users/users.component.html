@@ -1,78 +1,91 @@
 @if (visible) {
-<mat-card  animate.enter="fadeInUp">
-    <mat-card-content>
-        <div class="header">
-            <h1>Пользователи</h1>
-            <a mat-raised-button color="primary" (click)="createUser()">
-                <mat-icon>add</mat-icon>
-                <span>Создать пользователя</span>
-            </a>
-        </div>
-
-        <div class="filters-container">
-            <mat-form-field appearance="outline">
-                <mat-label>Поиск по имени или email</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Начните вводить..." #input>
-                <mat-icon matSuffix>search</mat-icon>
-            </mat-form-field>
-        </div>
-
-        @defer (on viewport) {
-            <table mat-table [dataSource]="users()" class="mat-elevation-z8">
-                <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> № </th>
-                    <td mat-cell *matCellDef="let user; let i = index"> {{ i + 1 }} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Имя </th>
-                    <td mat-cell *matCellDef="let user"> {{user.fullName}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="email">
-                    <th mat-header-cell *matHeaderCellDef> Email </th>
-                    <td mat-cell *matCellDef="let user"> {{user.email}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef> Статус </th>
-                    <td mat-cell *matCellDef="let user">
-                        @let status = (user.status | userStatus);
-                        <mat-chip [ngClass]="status.class" selected>{{ status.text }}</mat-chip>
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="actions">
-                    <th mat-header-cell *matHeaderCellDef> Действия </th>
-                    <td mat-cell *matCellDef="let user">
-                        <a mat-icon-button color="primary" (click)="updateUser(user._id)" title="Редактировать">
-                            <mat-icon>edit</mat-icon>
-                        </a>
-                        <button mat-icon-button color="warn" (click)="deleteUser(user._id)" title="Удалить">
-                            <mat-icon>delete</mat-icon>
-                        </button>
-                    </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-
-        } @placeholder {
-            <div class="placeholder">Ожидание...</div>
-
-        } @loading {
-            <div class="loading-spinner">
-                <mat-spinner></mat-spinner>
+    <mat-card animate.enter="fadeInUp">
+        <mat-card-content>
+            <div class="header">
+                <h1>{{ 'USERS.TITLE' | translate }}</h1>
+                <a mat-raised-button color="primary" (click)="createUser()">
+                    <mat-icon>add</mat-icon>
+                    <span>{{ 'USERS.CREATE' | translate }}</span>
+                </a>
             </div>
 
-        } @error {
-            <div class="error-message">
-                <p>{{ error() }}</p>
-                <button mat-button color="primary" (click)="loadUsers()">Попробовать снова</button>
+            <div class="filters-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>{{ 'USERS.SEARCH_LABEL' | translate }}</mat-label>
+                    <input
+                            matInput
+                            (keyup)="applyFilter($event)"
+                            [placeholder]="'USERS.SEARCH_PLACEHOLDER' | translate"
+                            #input
+                    />
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
             </div>
-        }
 
-    </mat-card-content>
-</mat-card>
+            @defer (on viewport) {
+                <table mat-table [dataSource]="users()" class="mat-elevation-z8">
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> № </th>
+                        <td mat-cell *matCellDef="let user; let i = index"> {{ i + 1 }} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef>{{ 'USERS.NAME' | translate }}</th>
+                        <td mat-cell *matCellDef="let user">{{ user.fullName }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef>Email</th>
+                        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef>{{ 'USERS.STATUS' | translate }}</th>
+                        <td mat-cell *matCellDef="let user">
+                            @let status = (user.status | userStatus);
+                            <mat-chip [ngClass]="status.class" selected>{{ status.text }}</mat-chip>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef>{{ 'USERS.ACTIONS' | translate }}</th>
+                        <td mat-cell *matCellDef="let user">
+                            <a
+                                    mat-icon-button
+                                    color="primary"
+                                    (click)="updateUser(user._id)"
+                                    [matTooltip]="'COMMON.EDIT' | translate"
+                            >
+                                <mat-icon>edit</mat-icon>
+                            </a>
+                            <button
+                                    mat-icon-button
+                                    color="warn"
+                                    (click)="deleteUser(user._id)"
+                                    [matTooltip]="'COMMON.DELETE' | translate"
+                            >
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            } @placeholder {
+                <div class="placeholder">{{ 'COMMON.WAITING' | translate }}</div>
+            } @loading {
+                <div class="loading-spinner">
+                    <mat-spinner></mat-spinner>
+                </div>
+            } @error {
+                <div class="error-message">
+                    <p>{{ error() }}</p>
+                    <button mat-button color="primary" (click)="loadUsers()">
+                        {{ 'COMMON.RETRY' | translate }}
+                    </button>
+                </div>
+            }
+        </mat-card-content>
+    </mat-card>
 }
