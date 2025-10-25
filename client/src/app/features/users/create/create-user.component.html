@@ -1,83 +1,45 @@
-<div class="dialog-container">
-    <h2 mat-dialog-title>Создание профиль</h2>
+<h2 mat-dialog-title>
+    {{ ('DIALOGS.CREATE_TITLE') | translate:{ entity: ('ENTITIES.USER' | translate) } }}
+</h2>
 
-    <mat-dialog-content>
-            <form [formGroup]="profileForm" class="profile-form">
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Имя</mat-label>
-                    <input matInput formControlName="fullName">
-                    @if (profileForm.get('fullName')?.hasError('required')) {
-                        <mat-error>
-                            Имя обязательно
-                        </mat-error>
-                    }
-                </mat-form-field>
+<mat-dialog-content>
+    <form [formGroup]="profileForm" class="profile-form">
 
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Email</mat-label>
-                    <input matInput formControlName="email">
-                    @if (profileForm.get('email')?.hasError('email')) {
-                        <mat-error>
-                            Неверный формат email
-                        </mat-error>
-                    }
-                </mat-form-field>
+        <!-- Full Name -->
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'FIELDS.FULL_NAME' | translate }}</mat-label>
+            <input matInput formControlName="fullName" />
+            @if (profileForm.get('fullName')?.hasError('required')) {
+                <mat-error>{{ 'ERRORS.FULL_NAME_REQUIRED' | translate }}</mat-error>
+            }
+        </mat-form-field>
 
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Пароль</mat-label>
-                    <input matInput formControlName="passwordHash">
-                    @if (profileForm.get('passwordHash')?.hasError('required')) {
-                        <mat-error>
-                            Пароль обязательно
-                        </mat-error>
-                    }
-                </mat-form-field>
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'FIELDS.EMAIL' | translate }}</mat-label>
+            <input matInput formControlName="email" />
+            @if (profileForm.get('email')?.hasError('email')) {
+                <mat-error>{{ 'ERRORS.EMAIL_INVALID' | translate }}</mat-error>
+            }
+        </mat-form-field>
 
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Рол</mat-label>
-                    <mat-select formControlName="role">
-                        @for (option of roleOptions; track option.value) {
-                            <mat-option [value]="option.value">
-                                {{ option.viewValue }}
-                            </mat-option>
-                        }
-                    </mat-select>
-                    @if (profileForm.get('role')?.hasError('required')) {
-                        <mat-error>
-                            Рол обязателен
-                        </mat-error>
-                    }
-                </mat-form-field>
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'FIELDS.PASSWORD' | translate }}</mat-label>
+            <input matInput formControlName="passwordHash" type="password" />
+            @if (profileForm.get('passwordHash')?.hasError('required')) {
+                <mat-error>{{ 'ERRORS.PASSWORD_REQUIRED' | translate }}</mat-error>
+            }
+        </mat-form-field>
 
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Позиция</mat-label>
-                    <mat-select formControlName="position">
-                        @for (option of positionOptions; track option.value) {
-                            <mat-option [value]="option.value">
-                                {{ option.viewValue }}
-                            </mat-option>
-                        }
-                    </mat-select>
-                    @if (profileForm.get('position')?.hasError('required')) {
-                        <mat-error>
-                            Позиция обязателен
-                        </mat-error>
-                    }
-                </mat-form-field>
-            </form>
+    </form>
+</mat-dialog-content>
 
-
-        @if (errorMessage) {
-            <div class="error-message">
-                {{ errorMessage }}
-            </div>
-        }
-    </mat-dialog-content>
-
-    <mat-dialog-actions align="end" class="dialog-actions">
-        <button mat-button (click)="onCancel()">Отмена</button>
-        <button mat-flat-button color="primary" (click)="onSave()" [disabled]="profileForm.invalid">
-            Сохранить
-        </button>
-    </mat-dialog-actions>
-</div>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">
+        {{ 'COMMON.CANCEL' | translate }}
+    </button>
+    <button mat-flat-button color="primary" (click)="onSave()" [disabled]="profileForm.invalid">
+        {{ 'COMMON.SAVE' | translate }}
+    </button>
+</mat-dialog-actions>

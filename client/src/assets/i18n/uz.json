@@ -1,0 +1,50 @@
+{
+  "MENU": {
+    "DASHBOARD": "Boshqaruv paneli",
+    "CLIENTS": "Mijozlar",
+    "USERS": "Foydalanuvchilar",
+    "SETTINGS": "Sozlamalar"
+  },
+  "LANGUAGE": {
+    "SELECT": "Tilni tanlang"
+  },
+  "COMMON": {
+    "SAVE": "Saqlash",
+    "CANCEL": "Bekor qilish",
+    "DELETE": "Oʻchirish",
+    "EDIT": "Tahrirlash",
+    "WAITING": "Kutilmoqda...",
+    "RETRY": "Qayta urinib ko‘rish"
+  },
+  "ENTITIES": {
+    "USER": "foydalanuvchini",
+    "CLIENT": "mijozni",
+    "PROJECT": "loyihani"
+  },
+  "FIELDS": {
+    "FULL_NAME": "Ism",
+    "EMAIL": "Email",
+    "PASSWORD": "Parol"
+  },
+  "ERRORS": {
+    "FULL_NAME_REQUIRED": "Ism majburiy",
+    "EMAIL_INVALID": "Email formati noto‘g‘ri",
+    "PASSWORD_REQUIRED": "Parol majburiy"
+  },
+  "DIALOGS": {
+    "CREATE_TITLE": "{{entity}} yaratish",
+    "EDIT_TITLE": "{{entity}} tahrirlash",
+    "DELETE_TITLE": "{{entity}} o‘chirish"
+  },
+  "USERS": {
+    "TITLE": "Foydalanuvchilar",
+    "CREATE": "Foydalanuvchini yaratish",
+    "SEARCH_LABEL": "Ism yoki email bo‘yicha qidirish",
+    "SEARCH_PLACEHOLDER": "Yozishni boshlang...",
+    "NAME": "Ism",
+    "STATUS": "Holat",
+    "ACTIONS": "Amallar",
+    "DELETE_CONFIRM": "Ushbu foydalanuvchini o‘chirmoqchimisiz?",
+    "LOAD_ERROR": "Foydalanuvchilarni yuklashda xatolik yuz berdi"
+  }
+}
