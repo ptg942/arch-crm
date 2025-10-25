@@ -14,7 +14,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { UserStatusPipe } from '../../pipes/userStatus.pipe';
 import { DialogService } from '../../services/dialog.service';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { MatTooltip } from '@angular/material/tooltip-module.d';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 interface UsersState {
   users: User[];
@@ -32,14 +32,12 @@ interface UsersState {
     MatTableModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    // MatLabel,
-    // MatFormField,
     MatInput,
     MatChipsModule,
     UserStatusPipe,
     TranslatePipe,
     MatFormField,
-    MatTooltip,
+    MatTooltipModule,
   ],
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],

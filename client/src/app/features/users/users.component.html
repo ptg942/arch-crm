@@ -43,7 +43,7 @@
                         <th mat-header-cell *matHeaderCellDef>{{ 'USERS.STATUS' | translate }}</th>
                         <td mat-cell *matCellDef="let user">
                             @let status = (user.status | userStatus);
-                            <mat-chip [ngClass]="status.class" selected>{{ status.text }}</mat-chip>
+                            <mat-chip selected>{{ status.text }}</mat-chip>
                         </td>
                     </ng-container>
 
